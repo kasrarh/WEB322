@@ -75,38 +75,43 @@
                 <h1>Register</h1>
             </div>
           <div class="col-md-12 col-lg-12 col-xl-12">
-            <img src="../pictures/hero.jpg" class="img-fluid" alt="Phone image" />
+            <img src="../pictures/hero.jpg" class="img-fluid" />
           </div>
           <div class="col-md-6 col-lg-6 col-xl-6 p-5">
-            <form
-              action="/login"
-              enctype="application/x-www-form-urlencoded"
-              method="post"
+            <form action="/register" enctype="application/x-www-form-urlencoded" method="post"
             >
             
               <div class="form-outline mb-4">
-                {{#if loginErrorMsg}}<div class="alert alert-danger">
-                    Error:{{loginErrorMsg}}</div>{{/if}}
+                {{#if errorMessage}}<div class="alert alert-danger">
+                    Error:{{errorMessage}}</div>{{/if}}
               </div>
-                <input {{#if username}}value="{{username}}"{{/if}} name="username" type="text" id="form1Example13"
+              <input {{#if body.name}}value="{{body.ame}}"{{/if}} name="name" type="text" id="name"
                   class="form-control form-control-lg"
                 />
-                <label class="form-label" for="form1Example13">Username</label>
+                <label class="form-label" for="name">Full Name</label>
+                <input {{#if body.username}}value="{{body.username}}"{{/if}} name="username" type="text" id="username"
+                  class="form-control form-control-lg"
+                />
+                <label class="form-label" for="username">Username</label>
 
               <div class="form-outline mb-4">
-                <input
-                  type="password"
-                  name="password"
-                  id="form1Example23"
+                <input type="password" name="password" id="password" class="form-control form-control-lg"
+                />
+                <label class="form-label" for="password">Password</label>
+              </div>
+              <input {{#if body.phone}}value="{{body.phone}}"{{/if}} name="phone" type="text" id="phone"
                   class="form-control form-control-lg"
                 />
-                <label class="form-label" for="form1Example23">Password</label>
-              </div>
+                <label class="form-label" for="phone">Phone number</label>
+                <input {{#if body.email}}value="{{body.email}}"{{/if}} name="email" type="email" id="email"
+                  class="form-control form-control-lg"
+                />
+                <label class="form-label" for="email">Email</label>
 
               <div
                 class="d-flex justify-content-around align-items-center mb-4"
               >
-              <button  type="submit" value="Login" name="login" class="btn btn-primary btn-lg btn-block"
+              <button  type="submit" value="register" name="register" class="btn btn-primary btn-lg btn-block"
               >
                 Sign in
               </button>

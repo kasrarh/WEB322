@@ -75,32 +75,26 @@
                 <h1>Login</h1>
             </div>
           <div class="col-md-12 col-lg-12 col-xl-12">
-            <img src="../pictures/hero.jpg" class="img-fluid" alt="Phone image" />
+            <img src="../pictures/hero.jpg" class="img-fluid" />
           </div>
           <div class="col-md-6 col-lg-6 col-xl-6 p-5">
-            <form
-              action="/login"
-              enctype="application/x-www-form-urlencoded"
-              method="post"
+            <form action="/login" enctype="application/x-www-form-urlencoded" method="post"
             >
             
               <div class="form-outline mb-4">
-                {{#if loginErrorMsg}}<div class="alert alert-danger">
-                    Error:{{loginErrorMsg}}</div>{{/if}}
+                {{#if errorMessage}}<div class="alert alert-danger">
+                    Error:{{errorMessage}}</div>{{/if}}
               </div>
-                <input {{#if username}}value="{{username}}"{{/if}} name="username" type="text" id="form1Example13"
+                <input {{#if username}}value="{{username}}"{{/if}} name="username" type="text" id="username"
                   class="form-control form-control-lg"
                 />
-                <label class="form-label" for="form1Example13">Username</label>
+                <label class="form-label" for="username">Username</label>
 
               <div class="form-outline mb-4">
-                <input
-                  type="password"
-                  name="password"
-                  id="form1Example23"
+                <input type="password" name="password" id="password"
                   class="form-control form-control-lg"
                 />
-                <label class="form-label" for="form1Example23">Password</label>
+                <label class="form-label" for="password">Password</label>
               </div>
 
               <div

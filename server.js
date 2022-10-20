@@ -34,13 +34,31 @@ app.get("/register", function (req, res) {
 
 app.post("/login", function (req, res) {
     let body = req.body;
-    console.log(body.username)
     if (body.username && body.password && specialChars(body.username) == false) {
       res.render("blog", { layout: false });
     } else {
-      var loginErrorMsg = "The username contains special characters";
-      res.render("login", { layout: false, loginErrorMsg: loginErrorMsg , username: String(body.username)});
+      var errorMessage = "Username or Password is incorect";
+      res.render("login", { layout: false, errorMessage: errorMessage , username: String(body.username)});
     }
   });
+app.post("/register", function (req, res) {
+    let body = req.body
+    if (body.name && body.username && body.password && body.phone && body.email &&
+         body.password.length >=8, specialChars(body.password) == true && specialChars(body.username) == false ){
+            res.render("blog", { layout: false });
+         }else if(body.password.length < 8){
+            var errorMessage = "password should be 8 or more characters"
+            res.render("register", { layout: false, errorMessage: errorMessage, data:body });
+         }else if(specialChars(body.password) == false){
+            var errorMessage = "password should contain special characters"
+            res.render("register", { layout: false, errorMessage: errorMessage, data:body });
+         }else if(specialChars(body.username) == true){
+            var errorMessage = "username should not contain special characters"
+            res.render("register", { layout: false, errorMessage: errorMessage, data:body });
+         }else {
+            var errorMessage = "something went wrong, try again"
+            res.render("register", { layout: false, errorMessage: errorMessage, data:body });
+         }
+})
 
 app.listen(port);
